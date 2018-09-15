@@ -30,13 +30,15 @@ export default {
 
       function play() {
         if(index < self.currentToneList.length){
-          const tone = self.currentToneList[index]
+          const tone = self.currentToneList[index].tone;
+          const speed = self.currentToneList[index].speed;
+          
           self.$emit('tone', tone)
           painoInstance.play(tone);
           index++;
           setTimeout(()=>{
             play();
-          }, 500)
+          }, speed);
         }       
       }
 
