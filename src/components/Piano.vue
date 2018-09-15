@@ -1,5 +1,7 @@
 <template>
-  <button @click="play">点击播放</button>
+  <section class="m-piano">
+    <button class="playBtn" @click="play">点击播放</button>
+  </section>
 </template>
 
 <script>
@@ -43,3 +45,18 @@ export default {
 }
 </script>
 
+<style>
+  .m-piano{
+    text-align: center;
+  }
+
+  .m-piano .playBtn{
+    border: none;
+    outline: none;
+    padding: 8px 25px;
+    border-radius: 4px;
+    height: 46px;
+    color: #fff;
+    background-color: #00dce6; 
+  }
+</style>
