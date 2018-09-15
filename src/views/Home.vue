@@ -68,7 +68,7 @@ export default {
         lastSpeed = this.getSpeed(lastSpeed,Txs,lastTxs)
         lastTxs = Txs;
         this.toneList.push({tone:this.getTone(Txs),speed:lastSpeed})
-        console.log("data:",{tone:this.getTone(Txs),speed:lastSpeed})
+        // console.log("data:",{tone:this.getTone(Txs),speed:lastSpeed})
     }
   }
 }
