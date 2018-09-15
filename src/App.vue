@@ -1,20 +1,6 @@
 <template>
   <div id="app">
-    <sui-menu inverted>
-      <sui-container>
-        <a href="/" is="sui-menu-item" class="header">
-          <img src="./assets/logo.png" class="logo">
-          OCAP Vue.js Starter
-        </a>
-
-        <router-link to="/" is="sui-menu-item">Home</router-link>
-        <router-link to="/query" is="sui-menu-item">Query Demo</router-link>
-        <router-link to="/subscription" is="sui-menu-item">Subscription Demo</router-link>
-      </sui-container>
-    </sui-menu>
-    <sui-container class="main">
-      <router-view/>
-    </sui-container>
+    <router-view/>
   </div>
 </template>
 
