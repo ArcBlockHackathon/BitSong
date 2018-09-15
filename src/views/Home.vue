@@ -1,8 +1,8 @@
 <template>
   <section>
     <simple-header>BitSong</simple-header>
-    <piano :tone-list="toneList"></piano>
-    <chart :data="toneList" />
+    <piano :tone-list="toneList" v-on:tone="onTonePlay"></piano>
+    <chart :data="playedToneList" />
   </section>
 </template>
 
@@ -17,12 +17,18 @@ export default {
   data(){
     return {
       toneList: [1,3,2,4,5,6,7,3,2,4],
+      playedToneList: [],
     }
   },
   components: {
     Piano,
     Chart,
     SimpleHeader,
+  },
+  methods: {
+    onTonePlay(tone) {
+      this.playedToneList.push(tone);
+    },
   },
   async mounted() {
     this.toneList.push(3,3,3,1,3,5, 1,5,3,6 ,7,7,6,5, 3,5,6,4,5);

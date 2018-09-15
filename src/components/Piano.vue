@@ -28,7 +28,9 @@ export default {
 
       function play() {
         if(index < self.currentToneList.length){
-          painoInstance.play(self.currentToneList[index]);
+          const tone = self.currentToneList[index]
+          self.$emit('tone', tone)
+          painoInstance.play(tone);
           index++;
           setTimeout(()=>{
             play();
