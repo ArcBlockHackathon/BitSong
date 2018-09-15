@@ -19,15 +19,10 @@ export default {
   },
   async mounted() {
     console.log("hello")
-    this.nextToneList=[3,3,3,1,3,5, 1,5,3,6 ,7,7,6,5, 3,5,6,4,5]
-    for(var i= 200;i<250;i++){
-      let nextToneList = new Array()
-      for(var j=0;j<20;j++){
-        const result = await svc.getNumberTxs({page:i*20+j})
-        nextToneList.push((Math.ceil(result.reduce((total,num)=>(total+num),0)/100))%6+1)
-      }
-      console.log("result:",nextToneList)
-      this.toneList = nextToneList
+    this.toneList.push(3,3,3,1,3,5, 1,5,3,6 ,7,7,6,5, 3,5,6,4,5)
+    for(var i= 4000;i<5000;i++){
+        const result = await svc.getNumberTxs({page:i})
+        this.toneList.push((Math.ceil(result.reduce((total,num)=>(total+num),0)/100))%6+1)
     }
   }  
 }
