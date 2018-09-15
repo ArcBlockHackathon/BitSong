@@ -1,7 +1,6 @@
 <template>
   <section>
-    <img src="../assets/logo.png" alt="logo">
-    <piano></piano>
+    <piano :tone-list="toneList"></piano>
   </section>
 </template>
 
@@ -10,12 +9,14 @@ import Piano from '../components/Piano.vue';
 
 export default {
   name: 'Home',
+  data(){
+    return {
+      toneList: [1,3,2,4,5,6,7,3,2,4],
+    }
+  },
   components: {
     Piano,
   },
-  mounted() {
-    console.log('112233');
-  }
 }
 </script>
 
