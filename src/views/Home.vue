@@ -1,12 +1,14 @@
 <template>
   <section>
     <piano :tone-list="toneList"></piano>
+    <chart :data="statData" />
   </section>
 </template>
 
 <script>
 import Piano from '../components/Piano.vue';
-import svc from '../services/transactions.js'
+import Chart from '../components/Chart.vue';
+import transactionSvc from '../services/transactions';
 export default {
   name: 'Home',
   data(){
@@ -16,15 +18,21 @@ export default {
   },
   components: {
     Piano,
+    Chart,
+  },
+  data() {
+    return {
+      statData: [],
+    };
   },
   async mounted() {
-    console.log("hello")
-    this.toneList.push(3,3,3,1,3,5, 1,5,3,6 ,7,7,6,5, 3,5,6,4,5)
-    for(var i= 4000;i<5000;i++){
-        const result = await svc.getNumberTxs({page:i})
-        this.toneList.push((Math.ceil(result.reduce((total,num)=>(total+num),0)/100))%6+1)
+    this.toneList.push(3,3,3,1,3,5, 1,5,3,6 ,7,7,6,5, 3,5,6,4,5);
+    for(var i= 4000;i < 5000;i++){
+      const result = await transactionSvc.getStat({ page:i });
+      this.toneList.push((Math.ceil(result.avg / 100)) % 6 + 1);
+      console.log(this.toneList);
     }
-  }  
+  }
 }
 </script>
 

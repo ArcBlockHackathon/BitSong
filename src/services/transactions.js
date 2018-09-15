@@ -22,4 +22,18 @@ export default {
       return res.map(req => req.blocksByHeight.data.map(item => item.number_txs)).reduce((root, item) => root.concat(item), []);
     });
   },
+  async getStat({ page = 0, size = 100}) {
+    if (localStorage.getItem(`statP${page}`)) {
+      return JSON.parse(localStorage.getItem(`statP${page}`));
+    }
+    const numbertxs = await this.getNumberTxs({ page, size });
+    const stat = {
+      page,
+      max: Math.max.apply(null, numbertxs),
+      min: Math.min.apply(null, numbertxs),
+      avg: numbertxs.reduce((a, b) => a + b, 0) / numbertxs.length,
+    };
+    localStorage.setItem(`statP${page}`, JSON.stringify(stat));
+    return stat;
+  },
 };
