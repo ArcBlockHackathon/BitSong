@@ -1,7 +1,7 @@
 <template>
   <section>
     <piano :tone-list="toneList"></piano>
-    <chart :data="statData" />
+    <chart :data="toneList" />
   </section>
 </template>
 
@@ -19,11 +19,6 @@ export default {
   components: {
     Piano,
     Chart,
-  },
-  data() {
-    return {
-      statData: [],
-    };
   },
   async mounted() {
     this.toneList.push(3,3,3,1,3,5, 1,5,3,6 ,7,7,6,5, 3,5,6,4,5);
