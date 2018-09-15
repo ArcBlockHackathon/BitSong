@@ -45,11 +45,13 @@ export default {
       return 11
     }else {
       let rate = Txs/this.maxTxs
+      if(rate < 0.55){
+        return 1;
+      }
       return Math.floor((rate-0.5)*20)
     }
     },
-  },
-  
+  },  
   components: {
     Piano,
     Chart,
@@ -64,6 +66,7 @@ export default {
         const result = await transactionSvc.getNumberTxs({page:i})
         const Txs = Math.ceil((result.reduce((total,num)=>(total+num),0))/100)
         lastSpeed = this.getSpeed(lastSpeed,Txs,lastTxs)
+        lastTxs = Txs;
         this.toneList.push({tone:this.getTone(Txs),speed:lastSpeed})
         console.log("data:",{tone:this.getTone(Txs),speed:lastSpeed})
     }
