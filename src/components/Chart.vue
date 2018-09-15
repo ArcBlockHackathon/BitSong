@@ -30,7 +30,7 @@ export default {
   },
   watch: {
     formattedData() {
-      this.chart.source(this.formattedData);
+      this.chart.changeData(this.formattedData);
       this.chart.render();
     },
   },
@@ -43,14 +43,17 @@ export default {
 
     chart.source(this.formattedData);
 
-    chart.line().position('index*count').color('green').shape('smooth').animate({
-      update: {
-        animation: 'delayScaleInY', // 动画名称
-        easing: 'easeQuartIn', // 动画缓动效果
-        // delay: 100, // 动画延迟执行时间
-        duration: 600 // 动画执行时间
-      },
-    });
+    chart.line().position('index*count')
+      .color('count', '#4a657a-#308e92-#b1cfa5-#f5d69f-#f5898b-#ef5055')
+      .shape('smooth')
+      .animate({
+        update: {
+          animation: 'delayScaleInY', // 动画名称
+          easing: 'easeQuartIn', // 动画缓动效果
+          // delay: 100, // 动画延迟执行时间
+          duration: 600 // 动画执行时间
+        },
+      });
     
     chart.render();
   },
