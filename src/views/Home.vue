@@ -22,6 +22,9 @@ export default {
     }
   },
   methods:{
+    onTonePlay(tone) {
+      this.playedToneList.push(tone);
+    },
     getSpeed(speed,txs,lastTxs){
     if(txs > lastTxs){
       speed -= 50
@@ -52,18 +55,13 @@ export default {
     Chart,
     SimpleHeader,
   },
-  methods: {
-    onTonePlay(tone) {
-      this.playedToneList.push(tone);
-    },
-  },
   async mounted() {
     console.log("hello")
     //this.toneList.push(3,3,3,1,3,5, 1,5,3,6 ,7,7,6,5, 3,5,6,4,5)
     let lastTxs = 1000
     let lastSpeed = 400
     for(var i= 4000;i<5000;i++){
-        const result = await svc.getNumberTxs({page:i})
+        const result = await transactionSvc.getNumberTxs({page:i})
         const Txs = Math.ceil((result.reduce((total,num)=>(total+num),0))/100)
         lastSpeed = this.getSpeed(lastSpeed,Txs,lastTxs)
         this.toneList.push({tone:this.getTone(Txs),speed:lastSpeed})
