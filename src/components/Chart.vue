@@ -37,14 +37,13 @@ export default {
   mounted() {
     const chart = this.chart = new G2.Chart({
       container: 'c1',
-      width: window.innerWidth,
-      height: window.innerHeight - 100,
+      width: 800,
+      height: 600,
     });
 
     chart.source(this.formattedData);
 
     chart.line().position('index*count')
-      .color('count', '#4a657a-#308e92-#b1cfa5-#f5d69f-#f5898b-#ef5055')
       .shape('smooth')
       .animate({
         update: {
@@ -61,5 +60,10 @@ export default {
 </script>
 
 <style>
-
+body {
+  text-align: center;
+}
+#c1 {
+  display: inline-block;
+}
 </style>
