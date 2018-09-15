@@ -37,8 +37,8 @@ export default {
   mounted() {
     const chart = this.chart = new G2.Chart({
       container: 'c1',
-      width: 600,
-      height: 300,
+      width: window.innerWidth,
+      height: window.innerHeight - 100,
     });
 
     chart.source(this.formattedData);
