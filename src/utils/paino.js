@@ -10,6 +10,10 @@ class Piano {
       5: `${host}/audio/piano/47.mp3`,
       6: `${host}/audio/piano/49.mp3`,
       7: `${host}/audio/piano/51.mp3`,
+      8: `${host}/audio/piano/52.mp3`,
+      9: `${host}/audio/piano/54.mp3`,
+      10: `${host}/audio/piano/56.mp3`,
+      11: `${host}/audio/piano/57.mp3`,
     };
     this.context = new window.AudioContext();
     this.bufferMap = {};

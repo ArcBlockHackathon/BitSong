@@ -1,18 +1,24 @@
 <template>
   <section>
-    <piano :tone-list="toneList"></piano>
+    <simple-header>BitSong</simple-header>
+    <piano :tone-list="toneList" v-on:tone="onTonePlay"></piano>
+    <chart :data="playedToneList" />
   </section>
 </template>
 
 <script>
 import Piano from '../components/Piano.vue';
-import svc from '../services/transactions.js'
+import Chart from '../components/Chart.vue';
+import transactionSvc from '../services/transactions';
+import SimpleHeader from '../components/SimpleHeader.vue';
+
 export default {
   name: 'Home',
   data(){
     return {
       toneList: [],
       maxTxs:1000,
+      playedToneList: Array(30).fill(0),
     }
   },
   methods:{
@@ -43,6 +49,13 @@ export default {
   
   components: {
     Piano,
+    Chart,
+    SimpleHeader,
+  },
+  methods: {
+    onTonePlay(tone) {
+      this.playedToneList.push(tone);
+    },
   },
   async mounted() {
     console.log("hello")
@@ -56,7 +69,7 @@ export default {
         this.toneList.push({tone:this.getTone(Txs),speed:lastSpeed})
         console.log("data:",{tone:this.getTone(Txs),speed:lastSpeed})
     }
-  }  
+  }
 }
 </script>
 
