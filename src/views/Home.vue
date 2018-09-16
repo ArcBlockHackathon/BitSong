@@ -26,18 +26,13 @@ export default {
       this.playedToneList.push(tone);
     },
     getSpeed(speed,txs,lastTxs){
-    if(txs > lastTxs){
-      speed -= 50
-    }else {
-      speed += 50
-    }
-    if(speed < 200){
-      return 200
-    }
-    if(speed  > 500){
-      return 500
-    }
-    return speed
+      // if(txs > lastTxs){
+      //   speed /= 2;
+      // } else {
+      //   speed *= 2;
+      // }
+      // return Math.max(Math.min(speed, 800), 100);
+      return txs > lastTxs ? 200 : 400;
   },
     getTone(Txs){
     if(Txs > this.maxTxs){
@@ -58,8 +53,6 @@ export default {
     SimpleHeader,
   },
   async mounted() {
-    console.log("hello")
-    //this.toneList.push(3,3,3,1,3,5, 1,5,3,6 ,7,7,6,5, 3,5,6,4,5)
     let lastTxs = 1000
     let lastSpeed = 400
     for(var i= 4000;i<5000;i++){
