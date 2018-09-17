@@ -1,19 +1,19 @@
 class Piano {
   constructor (){
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    const host = 'http://10.113.8.125:8000';
+    const host = '/tone';
     const toneMap = {
-      1: `${host}/audio/piano/40.mp3`,
-      2: `${host}/audio/piano/42.mp3`,
-      3: `${host}/audio/piano/44.mp3`,
-      4: `${host}/audio/piano/45.mp3`,
-      5: `${host}/audio/piano/47.mp3`,
-      6: `${host}/audio/piano/49.mp3`,
-      7: `${host}/audio/piano/51.mp3`,
-      8: `${host}/audio/piano/52.mp3`,
-      9: `${host}/audio/piano/54.mp3`,
-      10: `${host}/audio/piano/56.mp3`,
-      11: `${host}/audio/piano/57.mp3`,
+      1: `${host}/40.mp3`,
+      2: `${host}/42.mp3`,
+      3: `${host}/44.mp3`,
+      4: `${host}/45.mp3`,
+      5: `${host}/47.mp3`,
+      6: `${host}/49.mp3`,
+      7: `${host}/51.mp3`,
+      8: `${host}/52.mp3`,
+      9: `${host}/54.mp3`,
+      10: `${host}/56.mp3`,
+      11: `${host}/57.mp3`,
     };
     this.context = new window.AudioContext();
     this.bufferMap = {};
